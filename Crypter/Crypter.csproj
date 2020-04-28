@@ -136,6 +136,7 @@
     <Content Include="Resources\lnk_url.txt" />
     <Content Include="Resources\js_url.txt" />
     <Content Include="Resources\autoit_url.txt" />
+    <Content Include="Resources\imgcrypt.txt" />
     <Content Include="Resources\VBS_url.txt" />
     <Content Include="Resources\VB.txt" />
   </ItemGroup>

