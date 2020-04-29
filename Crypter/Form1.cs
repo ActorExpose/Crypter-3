@@ -485,5 +485,30 @@ namespace CrypterExample
 						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
+
+		private void button15_Click(object sender, EventArgs e)
+		{
+			string Source = Resources.CSharp_js_url;
+			if (textBox4.Text != "")
+			{
+				if (textBox4.Text.Contains("js"))
+				{
+					Source = Source.Replace("123456", textBox4.Text);
+					textBox2.Text = Source;
+					MessageBox.Show("Copy to VS ; Use .NET Framework 2 ; Choose Windows Application.",
+							"Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				} 
+				else
+				{
+					MessageBox.Show("Please enter the url of the js by using DotNetToJScript.",
+						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}				
+			}
+			else
+			{
+				MessageBox.Show("Please enter the url.",
+						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
 	}
 }

