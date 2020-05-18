@@ -163,6 +163,9 @@
   <data name="rc4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\rc4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="rc4_xor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\rc4_xor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="VB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\vb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>

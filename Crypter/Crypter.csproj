@@ -53,7 +53,7 @@
     <Reference Include="DotNetZip, Version=1.13.7.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.13.7\lib\net40\DotNetZip.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -138,6 +138,7 @@
     <Content Include="Resources\autoit_url.txt" />
     <Content Include="Resources\imgcrypt.txt" />
     <Content Include="Resources\CSharp_js_url.txt" />
+    <Content Include="Resources\rc4_xor.txt" />
     <Content Include="Resources\VBS_img.txt" />
     <Content Include="Resources\VBS_url.txt" />
     <Content Include="Resources\VB.txt" />

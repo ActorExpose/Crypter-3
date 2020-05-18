@@ -69,6 +69,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -415,7 +416,7 @@
             this.groupBox2.Size = new System.Drawing.Size(126, 68);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "imgVBS";
             // 
             // button18
             // 
@@ -437,12 +438,23 @@
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(144, 308);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(59, 38);
+            this.button19.TabIndex = 28;
+            this.button19.Text = "RC4\r\nXOR";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(751, 383);
+            this.Controls.Add(this.button19);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.groupBox1);
@@ -527,6 +539,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button19;
     }
 }
 
