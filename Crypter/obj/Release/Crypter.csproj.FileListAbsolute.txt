@@ -1,0 +1,9 @@
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.csprojAssemblyReference.cache
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\CrypterExample.Form1.resources
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.FormAbout.resources
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.FormDoc.resources
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.Properties.Resources.resources
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.csproj.GenerateResource.cache
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.csproj.CoreCompileInputs.cache
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.exe
+C:\Users\28718\Documents\GitHub\Crypter\Crypter\obj\Release\Crypter.pdb
