@@ -59,6 +59,9 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,6 +80,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCompiler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompiler.designer.cs">
+      <DependentUpon>FormCompiler.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDoc.cs">
       <SubType>Form</SubType>
@@ -98,6 +107,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCompiler.resx">
+      <DependentUpon>FormCompiler.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDoc.resx">
       <DependentUpon>FormDoc.cs</DependentUpon>

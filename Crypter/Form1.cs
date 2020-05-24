@@ -14,6 +14,7 @@ using System.Drawing;
 using System.CodeDom.Compiler;
 using Microsoft.CSharp;
 using System.Collections.Generic;
+using Compiler;
 
 namespace CrypterExample
 {
@@ -649,6 +650,14 @@ namespace CrypterExample
 			}
 
 			
+		}
+
+		private void 打开编译器ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (FormCompiler formCompiler = new FormCompiler())
+			{
+				formCompiler.ShowDialog();
+			}
 		}
 	}
 }

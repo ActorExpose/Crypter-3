@@ -70,6 +70,7 @@
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
+            this.打开编译器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -247,6 +248,7 @@
             // 
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.打开文件ToolStripMenuItem,
+            this.打开编译器ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
@@ -255,14 +257,14 @@
             // 打开文件ToolStripMenuItem
             // 
             this.打开文件ToolStripMenuItem.Name = "打开文件ToolStripMenuItem";
-            this.打开文件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.打开文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.打开文件ToolStripMenuItem.Text = "打开文件";
             this.打开文件ToolStripMenuItem.Click += new System.EventHandler(this.打开文件ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -278,14 +280,14 @@
             // 文档ToolStripMenuItem
             // 
             this.文档ToolStripMenuItem.Name = "文档ToolStripMenuItem";
-            this.文档ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.文档ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.文档ToolStripMenuItem.Text = "文档";
             this.文档ToolStripMenuItem.Click += new System.EventHandler(this.文档ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
@@ -448,6 +450,13 @@
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
+            // 打开编译器ToolStripMenuItem
+            // 
+            this.打开编译器ToolStripMenuItem.Name = "打开编译器ToolStripMenuItem";
+            this.打开编译器ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.打开编译器ToolStripMenuItem.Text = "打开编译器";
+            this.打开编译器ToolStripMenuItem.Click += new System.EventHandler(this.打开编译器ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -540,6 +549,7 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.ToolStripMenuItem 打开编译器ToolStripMenuItem;
     }
 }
 
